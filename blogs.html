@@ -1,0 +1,642 @@
+<html>
+
+<head>
+    <style>
+        @import "https://fonts.googleapis.com/css?family=Lato:400,800";
+        @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+        body {
+            font-weight: 400;
+            color: #222;
+            font-family: "VT323", monospace;
+            background-color: #e0fff3e3;
+        }
+        
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+            font-family: monospace;
+            background-color: #22222200;
+            overflow: hidden;
+            /*edit*/
+        }
+        
+        .main_h {
+            position: fixed;
+            top: 0px;
+            max-height: 70px;
+            z-index: 999;
+            width: 100%;
+            padding-top: 17px;
+            background: none;
+            overflow: hidden;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+            opacity: 0;
+            top: -100px;
+            padding-bottom: 6px;
+            font-family: "Montserrat", sans-serif;
+        }
+        
+        @media only screen and (max-width: 766px) {
+            .main_h {
+                padding-top: 25px;
+            }
+        }
+        
+        .open-nav {
+            max-height: 400px !important;
+        }
+        
+        .open-nav .mobile-toggle {
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+        }
+        
+        .sticky {
+            background-color: rgba(255, 255, 255, 0.93);
+            opacity: 1;
+            top: 0px;
+            border-bottom: 1px solid gainsboro;
+        }
+        
+        .logo {
+            width: 50px;
+            font-size: 25px;
+            color: #8f8f8f;
+            text-transform: uppercase;
+            float: left;
+            display: block;
+            margin-top: 0;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        @media only screen and (max-width: 766px) {
+            .logo {
+                float: none;
+            }
+        }
+        
+        nav {
+            float: right;
+            width: 60%;
+        }
+        
+        @media only screen and (max-width: 766px) {
+            nav {
+                width: 100%;
+            }
+        }
+        
+        nav ul {
+            list-style: none;
+            overflow: hidden;
+            text-align: right;
+            float: right;
+        }
+        
+        @media only screen and (max-width: 766px) {
+            nav ul {
+                padding-top: 10px;
+                margin-bottom: 22px;
+                float: left;
+                text-align: center;
+                width: 100%;
+            }
+        }
+        
+        nav ul li {
+            display: inline-block;
+            margin-left: 35px;
+            line-height: 1.5;
+        }
+        
+        @media only screen and (max-width: 766px) {
+            nav ul li {
+                width: 100%;
+                padding: 7px 0;
+                margin: 0;
+            }
+        }
+        
+        nav ul a {
+            color: #888888;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 20px;
+            position: absolute;
+            right: 22px;
+            top: 0;
+            width: 30px;
+            -webkit-transition: all 200ms ease-in;
+            -moz-transition: all 200ms ease-in;
+            transition: all 200ms ease-in;
+        }
+        
+        @media only screen and (max-width: 766px) {
+            .mobile-toggle {
+                display: block;
+            }
+        }
+        
+        .mobile-toggle span {
+            width: 30px;
+            height: 4px;
+            margin-bottom: 6px;
+            border-radius: 1000px;
+            background: #8f8f8f;
+            display: block;
+        }
+        
+        .row {
+            width: 100%;
+            max-width: 940px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 2%;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
+        
+        nav ul li {
+            display: inline-block;
+        }
+        
+        nav ul li a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: #aaa;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin: 0 10px;
+        }
+        
+        nav ul li a,
+        nav ul li a:after,
+        nav ul li a:before {
+            transition: all 0.5s;
+        }
+        
+        nav ul li a:hover {
+            color: #555;
+        }
+        /* stroke */
+        
+        nav.stroke ul li a,
+        nav.fill ul li a {
+            position: relative;
+        }
+        
+        nav.stroke ul li a:after,
+        nav.fill ul li a:after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 0%;
+            content: ".";
+            color: transparent;
+            background: #aaa;
+            height: 1px;
+        }
+        
+        nav.stroke ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .section {
+            width: 100%;
+            height: 120vh;
+            margin-bottom: 10vh;
+            display: flex;
+            flex-direction: column;
+            display: grid;
+            align-content: center;
+            place-content: center;
+            text-align: center;
+        }
+        
+        .parallax {
+            background-image: url(https://images.unsplash.com/photo-1575142322312-fbc2721c0588?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .parallax .overlay {
+            width: 100vw;
+            height: 100vh;
+            background: rgba(200, 200, 100, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .parallax h2 {
+            font-size: 50px;
+            font-weight: 900;
+        }
+        
+        .parallax h4 {
+            margin-top: 0;
+            font-size: 30px;
+        }
+        
+        #scrollDown {
+            position: absolute;
+            border: 2px solid white;
+            border-radius: 10px;
+            width: 15px;
+            height: 45px;
+            padding: 2px 0px;
+            bottom: 3vh;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        #scrollDown #rond {
+            height: 11px;
+            width: 11px;
+            border-radius: 50%;
+            background-color: white;
+            margin: 0 auto;
+            animation: anim1 1.5s infinite;
+        }
+        
+        @keyframes anim1 {
+            0% {
+                margin-top: 0px;
+                opacity: 0;
+            }
+            100% {
+                margin-top: 33px;
+                opacity: 1;
+            }
+        }
+        
+        header h2 {
+            font-size: 1.2em;
+            font-weight: 400;
+            line-height: 1em;
+        }
+        
+        p {
+            line-height: 1.5;
+        }
+        
+        header {
+            text-align: center;
+        }
+        
+        hr {
+            margin-top: 30px;
+            border-width: 0;
+            border-top: 2px solid #222;
+            width: 80px;
+        }
+        
+        .rainbow-letters {
+            margin-bottom: 30px;
+            opacity: 0.999;
+            z-index: 5;
+        }
+        
+        .rainbow-letters span {
+            font-size: 70px;
+            font-weight: 800;
+            mix-blend-mode: darken;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: -4px;
+        }
+        
+        .big-space {
+            padding: 8px;
+        }
+        
+        .rainbow-letters span:nth-child(10n+1),
+        .red {
+            color: #ef5350;
+        }
+        
+        .rainbow-letters span:nth-child(10n+2),
+        .light-purple {
+            color: #ab47bc;
+        }
+        
+        .rainbow-letters span:nth-child(10n+3),
+        .dark-purple {
+            color: #651fff;
+        }
+        
+        .rainbow-letters span:nth-child(10n+5),
+        .dark-blue {
+            color: #3949ab;
+        }
+        
+        .rainbow-letters span:nth-child(10n+4),
+        .blue {
+            color: #2196f3;
+        }
+        
+        .rainbow-letters span:nth-child(10n+6),
+        .light-blue {
+            color: #00bcd4;
+        }
+        
+        .rainbow-letters span:nth-child(10n+7),
+        .green {
+            color: #4caf50;
+        }
+        
+        .rainbow-letters span:nth-child(10n+8),
+        .yellow {
+            color: #ffc107;
+        }
+        
+        .rainbow-letters span:nth-child(10n+9),
+        .pink {
+            color: #e96290;
+        }
+        
+        .rainbow-letters span:nth-child(10n+10),
+        .orange {
+            color: #ff8f00;
+        }
+        
+         ::selection {
+            background: #3734ff40;
+        }
+        
+        @media only screen and (max-width: 450px) {
+            .rainbow-letters {
+                margin-top: 60px;
+            }
+            .rainbow-letters span {
+                font-size: 40px;
+            }
+        }
+        
+        .blogSection {
+            // background: #f5f7f8;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .band {
+            width: 90%;
+            max-width: 1240px;
+            position: absolute;
+            top: 0;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            grid-gap: 20px;
+        }
+        
+        @media only screen and (min-width: 500px) {
+            .band {
+                grid-template-columns: 1fr 1fr;
+            }
+            .item-1 {
+                grid-column: 1/span 2;
+            }
+            .item-1 h1 {
+                font-size: 30px;
+            }
+        }
+        
+        @media only screen and (min-width: 850px) {
+            .band {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+        /* card */
+        
+        .card {
+            min-height: 100%;
+            background: #fffadaac;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: #f2f2f2;
+            position: relative;
+            top: 0;
+            transition: all 0.1s ease-in;
+        }
+        
+        .card:hover {
+            top: -2px;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card article {
+            padding: 20px;
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        
+        .card .thumb {
+            padding-bottom: 60%;
+            background-size: cover;
+            background-position: center center;
+        }
+        
+        .card p {
+            flex: 1;
+            /* make p grow to fill available space*/
+            line-height: 1.4;
+        }
+        
+        .card span {
+            font-size: 12px;
+            font-weight: bold;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 2em 0 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Blog Cards, Info Cards - List of all Blogs</title>
+        <link rel="stylesheet" href="./style.css">
+
+    </head>
+
+    <body>
+        <!-- partial:index.partial.html -->
+        <!doctype html>
+        <html>
+
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="assets/css/portfolio.css">
+
+            <link rel="shortcut icon" href="media\favicon.ico" type="image/x-icon">
+            <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+        </head>
+        <!--
+  _   _      _ _        
+ | | | | ___| | | ___   
+ | |_| |/ _ \ | |/ _ \  
+ |  _  |  __/ | | (_) | 
+ |_| |_|\___|_|_|\___/  
+
+ -->
+
+        <body>
+
+            <h2 style="text-align:center;background-color:rgba(242, 208, 98, 0.518);color:rgb(255, 255, 255);padding-top:10px;padding-bottom:10px;">MY BLOGS</h2>
+
+            <header class="">
+            </header>
+
+            <br>
+
+            <div class="container">
+                <section class="blogSection section">
+                    <div class="support-grid"></div>
+
+                    <div class="band">
+
+
+                        <div class="item-4">
+                            <a href="https://u1904043.wixsite.com/ret19it042blog/post/cloud-computing" class="card" target="_blank">
+                                <div class="thumb" style="background-image: url(https://www.techxcorp.com/wp-content/uploads/2022/08/dien-toan-dam-may-la-gi.jpg);"></div>
+                                <article>
+                                    <h1>Cloud Computing</h1>
+                                    <p>Cloud computing is based on the principle of virtualization, which allows multiple users to access a shared pool of computing resources over the internet....</p>
+
+                                </article>
+                            </a>
+                        </div>
+                        <div class="item-5">
+                            <a href="https://u1904043.wixsite.com/ret19it042blog/post/introduction-to-blockchain-technology" class="card" target="_blank">
+                                <div class="thumb" style="background-image: url(https://mondo.com/wp-content/uploads/2022/12/new-the-future-of-blockchain-in-tech-2022.jpg);"></div>
+                                <article>
+                                    <h1>Introduction to Blockchain Technology</h1>
+
+                                </article>
+                            </a>
+                        </div>
+                        <div class="item-6">
+                            <a href="https://u1904043.wixsite.com/ret19it042blog/post/machine-learning-and-its-applications" class="card" target="_blank">
+                                <div class="thumb" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQluQtt6SP4ydGtucoaQX5M8Bij0dQJahn-Dwgx9ob4skgd9OsEtxjqG4fXsFj1aZ5sqXE&usqp=CAU);"></div>
+                                <article>
+                                    <h1>Machine learning and its applications</h1>
+
+
+                                </article>
+                            </a>
+                        </div>
+                        <div class="item-7">
+                            <a href="https://u1904043.wixsite.com/ret19it042blog/post/the-power-of-gpt-3-exploring-the-capabilities-of-the-latest-language-model" class="card" target="_blank">
+                                <div class="thumb" style="background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiY7lLTNq43Mnf7sYh8pzu5WjEhbaZc9KQP6OC2Oc4dROe97_yyVMwBL1fhRL5stPVZ4uB36oH-vTUzR9V95f3pkiYgXmRGCEUXPWSUHWl_9_k2VNpcNnarDl_ujT-ksDtJd3pi60kt8xZmWQlxpZ6fRRhGn4N2KWnRZaWbjezW_sRbkJrj66-Kh70gTw/w0/Unlocking%20the%20Power%20of%20Chat%20GPT%20-%20The%20Future%20of%20AI-min.jpg);"></div>
+                                <article>
+                                    <h1>The Power of GPT-3: Exploring the Capabilities of the Latest Language Model</h1>
+
+                                </article>
+                            </a>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+
+            <script src="js/portfolio.js"></script>
+        </body>
+
+        </html>
+        <!-- partial -->
+        <script src="./script.js"></script>
+        <script>
+            $(document).ready(function() {
+                const parllax = document.querySelector(".parallax");
+
+                window.addEventListener("scroll", function() {
+                    let offset = window.pageYOffset;
+                    parllax.style.backgroundPositionY = offset * 0.5 + 'px';
+                });
+
+                $(window).scroll(function() {
+                    var percent = $(document).scrollTop() / ($('#section1').height() / 3);
+                    $('#scrollDown').css('opacity', 1 - percent);
+                    if ($(window).scrollTop() > 100) {
+                        $('.main_h').addClass('sticky');
+                    } else {
+                        $('.main_h').removeClass('sticky');
+                    }
+                });
+
+            });
+            // Mobile Navigation
+            $('.mobile-toggle').click(function() {
+                if ($('.main_h').hasClass('open-nav')) {
+                    $('.main_h').removeClass('open-nav');
+                } else {
+                    $('.main_h').addClass('open-nav');
+                }
+            });
+
+            $('.main_h li a').click(function() {
+                if ($('.main_h').hasClass('open-nav')) {
+                    $('.navigation').removeClass('open-nav');
+                    $('.main_h').removeClass('open-nav');
+                }
+            });
+
+            // navigation scroll lijepo radi materem
+            $('nav a').click(function(event) {
+                var id = $(this).attr("href");
+                var offset = 70;
+                var target = $(id).offset().top - offset;
+                $('html, body').animate({
+                    scrollTop: target
+                }, 500);
+                event.preventDefault();
+            });
+        </script>
+
+    </body>
+
+    </html>

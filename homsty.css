@@ -1,0 +1,285 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url("photo-1544656376-ffe19d4b7353.jpeg");
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    background-color: #000000;
+    width: 4px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background-color: #000000;
+    box-shadow: inset 0 0 5px rgb(0, 0, 0);
+    border-radius: 1px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+    border-radius: 1px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #847200;
+}
+
+p.a {
+    transform: rotate(-10deg);
+    font-family: "Kunstler Script";
+    font-size: 35;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+}
+
+li {
+    display: inline;
+    padding: 5px;
+    background-color: black;
+    color: #FFF;
+}
+
+nav select {
+    display: none;
+    background-image: url("menn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 585px) {
+    nav ul {
+        display: none;
+    }
+    nav select {
+        display: inline-block;
+    }
+}
+
+.mainsec {
+    height: 100%;
+    width: 100%;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.abt-prt {
+    padding: 60px;
+    display: grid;
+    color: white;
+    background-image: url("abt.jpeg");
+    opacity: 0.8;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: color-burn;
+    width: 100%;
+    text-align: center;
+}
+
+.cnt-prt {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    display: inline-block;
+    color: white;
+    background: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    border: 0.8px solid rgba(255, 255, 255, 0);
+    border-top-color: #ffffff15;
+}
+
+.exp-prt {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    display: inline-block;
+    color: white;
+    background: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: auto;
+    text-align: center;
+    border: 0.8px solid rgba(255, 255, 255, 0);
+    border-top-color: #ffffff15;
+    overflow: scroll;
+}
+
+.expl {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+header {
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.546);
+    padding-top: 5px;
+    padding-left: 30px;
+    padding-right: 0px;
+    color: white;
+    font-size: 30px;
+}
+
+.headmen {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.headbefmen {
+    width: 0%;
+    text-align: left;
+    height: 100;
+}
+
+.headafmen {
+    padding-top: 15px;
+    padding-bottom: 0%;
+    padding-right: 10px;
+    font-size: 10;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% auto auto auto;
+    grid-gap: 3px;
+    justify-items: flex-end;
+    justify-content: flex-end;
+}
+
+.headcoli {
+    background-image: url("backgroundhead.jpg");
+    background-color: #00000049;
+    opacity: 0.85;
+    background-blend-mode: lighten;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-blend-mode: darken;
+    background-size: contain;
+    background-attachment: fixed;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: white;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+}
+
+.headcol1 {
+    padding-top: 25%;
+    padding-right: 10px;
+    padding-left: 30px;
+    text-align: left;
+    font-size: xxx-large;
+    height: 100%;
+    width: 100%;
+}
+
+.headcol2 {
+    padding-left: 2px;
+    text-align: left;
+    width: 100%;
+    height: 550px;
+    background-image: url("mememe.png.jpg");
+    display: block;
+}
+
+@import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300';
+.btn {
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    width: 90px;
+    cursor: pointer;
+}
+
+
+/* 
+========================
+  BUTTON THREE
+========================
+*/
+
+.btn-three {
+    color: #FFF;
+    transition: all 0.5s;
+    position: relative;
+}
+
+.btn-three::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all 0.3s;
+}
+
+.btn-three:hover::before {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+}
+
+.btn-three::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.5s;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(1.2, 1.2);
+}
+
+.btn-three:hover::after {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:900&display=swap");
+#container {
+    position: absolute;
+    margin: auto;
+    width: 100vw;
+    height: 80pt;
+    top: 0;
+    bottom: 0;
+    filter: url(#threshold) blur(0.1px);
+}
+
+#text1,
+#text2 {
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: yellow;
+    user-select: none;
+}
+
+footer {
+    background-color: black;
+    height: 300px;
+}
